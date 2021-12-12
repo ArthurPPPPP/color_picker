@@ -1,0 +1,1 @@
+export { inputRange } from "./Slider";
