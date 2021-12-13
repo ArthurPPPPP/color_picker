@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorPickerPage } from "./components/ColorPickerPage/ColorPickerPage";
+import { ColorPickerPage } from "./pages/ColorPickerPage";
 
 const App = () => {
   return (

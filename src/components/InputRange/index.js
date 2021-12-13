@@ -1,1 +1,1 @@
-export { inputRange } from "./Slider";
+export { InputRange } from "./InputRange";
