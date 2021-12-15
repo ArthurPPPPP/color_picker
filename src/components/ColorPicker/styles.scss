@@ -1,6 +1,9 @@
 .colorpicker {
   width: 100%;
   height: auto;
-  min-height: 400px;
+  min-height: 350px;
   border-radius: 25px;
+}
+.colorpicker:hover {
+  cursor: pointer;
 }

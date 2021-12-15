@@ -2,27 +2,30 @@ import React, { useState } from "react";
 import { ColorPicker } from "../../components/ColorPicker/ColorPicker";
 import { Buttons } from "../../components/Buttons";
 import { InputRange } from "../../components/InputRange";
+
 import "./styles.scss";
 
 export const ColorPickerPage = () => {
-  const [redValue, setRedValue] = useState(20);
-  const [greenValue, setGreenValue] = useState(20);
-  const [blueValue, setBlueValue] = useState(20);
+  const [redValue, setRedValue] = useState(205);
+  const [greenValue, setGreenValue] = useState(205);
+  const [blueValue, setBlueValue] = useState(205);
   const [visible, setVisible] = useState(false);
+  const [disable, setDisable] = useState(true);
   const [message, setMessage] = useState("Click on square to start ");
   return (
-    <div className="wrapper">
+    <main className="wrapper">
       <div className="colorpickerpage">
         <ColorPicker
           onSlidersBlockToggle={() => {
             setVisible(true);
+            setDisable(false);
           }}
           redValue={redValue}
           greenValue={greenValue}
           blueValue={blueValue}
         />
         {visible ? (
-          <div className="sliders">
+          <div className={`sliders`}>
             <InputRange
               value={redValue}
               color={"#f23d40"}
@@ -46,23 +49,24 @@ export const ColorPickerPage = () => {
             />
           </div>
         ) : (
-          <h2>{message}</h2>
+          <h3>{message}</h3>
         )}
 
         <Buttons
           onSubmit={() => {
             setVisible(false);
-            setMessage("");
+            setMessage(`Color: rgb(${redValue}, ${greenValue}, ${blueValue})`);
           }}
           onCancel={() => {
-            setRedValue(20);
-            setGreenValue(20);
-            setBlueValue(20);
+            setRedValue(205);
+            setGreenValue(205);
+            setBlueValue(205);
             setVisible(false);
             setMessage("");
           }}
+          disabled={disable}
         />
       </div>
-    </div>
+    </main>
   );
 };

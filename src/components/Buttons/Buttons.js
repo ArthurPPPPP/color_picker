@@ -1,11 +1,11 @@
 import React from "react";
 import "./styles.scss";
 
-export const Buttons = ({ onCancel, onSubmit }) => {
+export const Buttons = ({ onCancel, onSubmit, disabled }) => {
   return (
     <div className="buttons">
       <button
-        style={{ backgroundColor: "#44014C" }}
+        disabled={disabled}
         onClick={() => {
           onCancel();
         }}
@@ -14,6 +14,7 @@ export const Buttons = ({ onCancel, onSubmit }) => {
         Cancel
       </button>
       <button
+        disabled={disabled}
         className="submit"
         onClick={() => {
           onSubmit();
