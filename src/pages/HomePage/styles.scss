@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap");
+body {
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+}
+.homePage {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.navigation {
+  margin-top: 7%;
+  ul {
+    display: flex;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 20px;
+      align-items: center;
+      text-decoration: none;
+      list-style: none;
+      width: 250px;
+      height: 300px;
+    }
+  }
+}
+#gitLogo,
+#pickerLogo {
+  display: flex;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 10px;
+}
+@media (max-width: 650px) {
+  .navigation ul {
+    flex-direction: column;
+    li {
+      width: 170px;
+
+      height: 200px;
+    }
+  }
+  #gitLogo,
+  #pickerLogo {
+    display: flex;
+    width: 150px;
+  }
+}
