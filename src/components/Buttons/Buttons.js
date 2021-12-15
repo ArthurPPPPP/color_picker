@@ -1,11 +1,26 @@
 import React from "react";
-import "./styles.css";
+import "./styles.scss";
 
-export const Buttons = () => {
+export const Buttons = ({ onCancel, onSubmit }) => {
   return (
     <div className="buttons">
-      <button className="cancel">Cancel</button>
-      <button className="submit">Submit</button>
+      <button
+        style={{ backgroundColor: "#44014C" }}
+        onClick={() => {
+          onCancel();
+        }}
+        className="cancel"
+      >
+        Cancel
+      </button>
+      <button
+        className="submit"
+        onClick={() => {
+          onSubmit();
+        }}
+      >
+        Submit
+      </button>
     </div>
   );
 };

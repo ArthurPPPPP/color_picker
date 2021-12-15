@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Range, getTrackBackground } from "react-range";
 
 const STEP = 0.1;
 const MIN = 0;
 const MAX = 255;
 
-export const Slider = (propsValue) => {
-  const [sliderValue, setSliderValues] = useState([20]);
-  useEffect(() => {
-    propsValue.setColor(sliderValue);
-  }, [sliderValue]);
+export const InputRange = ({ value, color, onChange }) => {
+  const handleChange = (rangeValue) => {
+    const [v] = rangeValue;
+    onChange(v);
+  };
+  const sliderValue = [value];
 
   return (
     <div
@@ -25,27 +26,27 @@ export const Slider = (propsValue) => {
         step={STEP}
         min={MIN}
         max={MAX}
-        onChange={(values) => setSliderValues(values)}
-        renderTrack={({ props, children }) => (
+        onChange={handleChange}
+        renderTrack={({ props: trackProps, children }) => (
           <div
-            onMouseDown={(props.onMouseDown, console.log(props))}
-            onTouchStart={props.onTouchStart}
+            onMouseDown={trackProps.onMouseDown}
+            onTouchStart={trackProps.onTouchStart}
             style={{
-              ...props.style,
+              ...trackProps.style,
               height: "36px",
               display: "flex",
               width: "100%",
             }}
           >
             <div
-              ref={props.ref}
+              ref={trackProps.ref}
               style={{
                 height: "5px",
                 width: "100%",
                 borderRadius: "4px",
                 background: getTrackBackground({
                   values: sliderValue,
-                  colors: [`${propsValue.color}`, "#ccc"],
+                  colors: [`${color}`, "#ccc"],
                   min: MIN,
                   max: MAX,
                 }),
@@ -56,11 +57,11 @@ export const Slider = (propsValue) => {
             </div>
           </div>
         )}
-        renderThumb={({ props, isDragged }) => (
+        renderThumb={({ props: thumbProps, isDragged }) => (
           <div
-            {...props}
+            {...thumbProps}
             style={{
-              ...props.style,
+              ...thumbProps.style,
               height: "22px",
               width: "22px",
               borderRadius: "4px",
@@ -75,14 +76,14 @@ export const Slider = (propsValue) => {
               style={{
                 height: "16px",
                 width: "5px",
-                backgroundColor: isDragged ? `${propsValue.color}` : "#CCC",
+                backgroundColor: isDragged ? `${color}` : "#CCC",
               }}
             />
           </div>
         )}
       />
       <output style={{ marginTop: "5px" }} id="output">
-        {sliderValue[0].toFixed(1)}
+        {value.toFixed(1)}
       </output>
     </div>
   );
