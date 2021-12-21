@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { ColorPicker } from "../../components/ColorPicker/ColorPicker";
 import { Buttons } from "../../components/Buttons";
 import { InputRange } from "../../components/InputRange";
-
-import "./styles.scss";
+import styles from "./colorPickerPage.module.scss";
 
 export const ColorPickerPage = () => {
   const [redValue, setRedValue] = useState(205);
@@ -13,8 +12,8 @@ export const ColorPickerPage = () => {
   const [disable, setDisable] = useState(true);
   const [message, setMessage] = useState("Click on square to start ");
   return (
-    <main className="wrapper">
-      <div className="colorpickerpage">
+    <main className={styles.wrapper}>
+      <div className={styles.colorpickerpage}>
         <ColorPicker
           onSlidersBlockToggle={() => {
             setVisible(true);
@@ -25,7 +24,7 @@ export const ColorPickerPage = () => {
           blueValue={blueValue}
         />
         {visible ? (
-          <div className={`sliders`}>
+          <div className={styles.sliders}>
             <InputRange
               value={redValue}
               color={"#f23d40"}

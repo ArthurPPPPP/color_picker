@@ -1,17 +1,17 @@
 import React from "react";
-import "./styles.scss";
+import styles from "./colorPicker.module.scss";
 
 export const ColorPicker = (props) => {
-  const styles = {
-    background: `rgb(${props.redValue} ${props.greenValue} ${props.blueValue})`,
+  const pickerStyle = {
+    backgroundColor: `rgb(${props.redValue} ${props.greenValue} ${props.blueValue})`,
   };
   return (
     <div
       onClick={() => {
         props.onSlidersBlockToggle();
       }}
-      style={styles}
-      className="colorpicker"
+      style={pickerStyle}
+      className={styles.colorpicker}
     ></div>
   );
 };

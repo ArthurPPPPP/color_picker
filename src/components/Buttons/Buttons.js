@@ -1,21 +1,21 @@
 import React from "react";
-import "./styles.scss";
+import styles from "./button.module.scss";
 
 export const Buttons = ({ onCancel, onSubmit, disabled }) => {
   return (
-    <div className="buttons">
+    <div className={styles.buttons}>
       <button
         disabled={disabled}
         onClick={() => {
           onCancel();
         }}
-        className="cancel"
+        className={styles.cancel}
       >
         Cancel
       </button>
       <button
         disabled={disabled}
-        className="submit"
+        className={styles.submit}
         onClick={() => {
           onSubmit();
         }}
