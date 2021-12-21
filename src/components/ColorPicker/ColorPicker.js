@@ -11,7 +11,7 @@ export const ColorPicker = (props) => {
         props.onSlidersBlockToggle();
       }}
       style={pickerColors}
-      className={`${styles.colorpicker} ${pickerColors}`}
+      className={styles.colorpicker}
     ></div>
   );
 };
