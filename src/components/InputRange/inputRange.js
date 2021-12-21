@@ -1,5 +1,6 @@
 import React from "react";
 import { Range, getTrackBackground } from "react-range";
+import styles from "./input.module.scss";
 
 const STEP = 0.1;
 const MIN = 0;
