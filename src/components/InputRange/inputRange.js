@@ -1,6 +1,6 @@
 import React from "react";
 import { Range, getTrackBackground } from "react-range";
-
+import styles from "./input.module.scss";
 
 const STEP = 0.1;
 const MIN = 0;
@@ -14,14 +14,7 @@ export const InputRange = ({ value, color, onChange }) => {
   const sliderValue = [value];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        margin: "1em",
-      }}
-    >
+    <div className={styles.page} style={{}}>
       <Range
         values={sliderValue}
         step={STEP}
@@ -30,28 +23,20 @@ export const InputRange = ({ value, color, onChange }) => {
         onChange={handleChange}
         renderTrack={({ props: trackProps, children }) => (
           <div
+            className={styles.size}
             onMouseDown={trackProps.onMouseDown}
             onTouchStart={trackProps.onTouchStart}
-            style={{
-              ...trackProps.style,
-              height: "36px",
-              display: "flex",
-              width: "100%",
-            }}
           >
             <div
+              className={styles.background}
               ref={trackProps.ref}
               style={{
-                height: "5px",
-                width: "100%",
-                borderRadius: "4px",
                 background: getTrackBackground({
                   values: sliderValue,
                   colors: [`${color}`, "#ccc"],
                   min: MIN,
                   max: MAX,
                 }),
-                alignSelf: "center",
               }}
             >
               {children}
@@ -59,33 +44,18 @@ export const InputRange = ({ value, color, onChange }) => {
           </div>
         )}
         renderThumb={({ props: thumbProps, isDragged }) => (
-          <div
-            {...thumbProps}
-            style={{
-              ...thumbProps.style,
-              height: "22px",
-              width: "22px",
-              borderRadius: "4px",
-              backgroundColor: "#FFF",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              boxShadow: "0px 2px 6px #AAA",
-            }}
-          >
+          <div className={styles.button} {...thumbProps}>
             <div
+              className={styles.indicator}
               style={{
-                height: "16px",
-                width: "5px",
                 backgroundColor: isDragged ? `${color}` : "#CCC",
               }}
             />
           </div>
         )}
       />
-      <output style={{ marginTop: "5px" }} id="output">
-        {value.toFixed(1)}
-      </output>
+      <output className={styles.output}>{value.toFixed(1)}</output>
     </div>
   );
 };
+ 
