@@ -41,3 +41,9 @@ body {
 .sliders.exited {
   opacity: 0;
 }
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+}

@@ -1,8 +1,6 @@
 import React from "react";
-import { Header } from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import { ColorPickerPage } from "./pages/ColorPickerPage";
-import { Footer } from "./components/Footer";
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage/HomePage";
 

@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { ColorPicker } from "../../components/ColorPicker/ColorPicker";
-import { Buttons } from "../../components/Buttons";
+import { Button } from "../../components/Button/Button";
 import { InputRange } from "../../components/InputRange";
 import styles from "./colorPickerPage.module.scss";
 
+const defaultValue = 205;
 export const ColorPickerPage = () => {
-  const [redValue, setRedValue] = useState(205);
-  const [greenValue, setGreenValue] = useState(205);
-  const [blueValue, setBlueValue] = useState(205);
+  const [redValue, setRedValue] = useState(defaultValue);
+  const [greenValue, setGreenValue] = useState(defaultValue);
+  const [blueValue, setBlueValue] = useState(defaultValue);
   const [visible, setVisible] = useState(false);
-  const [disable, setDisable] = useState(true);
-  const [message, setMessage] = useState("Click on square to start ");
+
+  const message = `Color : rgb(${redValue}, ${greenValue}, ${blueValue})`;
+
+  const onCancel = () => {
+    setRedValue(defaultValue);
+    setGreenValue(defaultValue);
+    setBlueValue(defaultValue);
+    setVisible(false);
+  };
   return (
     <main className={styles.wrapper}>
       <div className={styles.colorpickerpage}>
         <ColorPicker
           onSlidersBlockToggle={() => {
             setVisible(true);
-            setDisable(false);
           }}
           redValue={redValue}
           greenValue={greenValue}
@@ -51,20 +58,18 @@ export const ColorPickerPage = () => {
           <h3>{message}</h3>
         )}
 
-        <Buttons
-          onSubmit={() => {
-            setVisible(false);
-            setMessage(`Color: rgb(${redValue}, ${greenValue}, ${blueValue})`);
-          }}
-          onCancel={() => {
-            setRedValue(205);
-            setGreenValue(205);
-            setBlueValue(205);
-            setVisible(false);
-            setMessage("");
-          }}
-          disabled={disable}
-        />
+        <div className={styles.buttons}>
+          <Button className={"cancel"} disable={!visible} onClick={onCancel}>
+            Cancel
+          </Button>
+          <Button
+            className={"submit"}
+            disable={!visible}
+            onClick={() => setVisible(false)}
+          >
+            Submit
+          </Button>
+        </div>
       </div>
     </main>
   );
